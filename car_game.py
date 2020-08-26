@@ -61,6 +61,15 @@ def crash():
     message_display("Game Over")
 
 
+red = (255, 0, 0)
+score_font = pygame.font.SysFont("bahnschrift", 32)
+
+
+def game_score(score):
+    value = score_font.render("Your Score: " + str(score), True, red)
+    display.blit(value, [0, 0])
+
+
 def message_display(text):
     largetext=pygame.font.Font("freesansbold.ttf",80)
     textsurf,textrect=text_object(text,largetext)
@@ -88,6 +97,7 @@ def car(x,y): # create car function
 def loop():  # all the function are called using this function
     x=400
     y=500
+    score=0
     x_change=0  # set x position at x axis
     y_change=0
     car_width=23
@@ -128,12 +138,13 @@ def loop():  # all the function are called using this function
             police_starty=0-police_height  # only onc car is passed
             police_startx=random.randrange(130,(1000-300))  # another car is come
             police = random.randrange(0,10) # different car every times come
-            print(police)
+            score+=1
 
         if y<police_starty+police_height:
             if x>police_startx and x<police_startx+ police_width or x + car_width > police_startx and x + car_width<police_startx+ police_width:
                 crash()
 
+        game_score(score)
         pygame.display.update()
 loop()
 pygame.quit()
