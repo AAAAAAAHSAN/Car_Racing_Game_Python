@@ -96,13 +96,13 @@ def car(x,y): # create car function
 
 
 def loop():  # all the function are called using this function
-    x=400
-    y=500
-    score=0
-    x_change=0  # set x position at x axis
+    x = 400
+    y = 500
+    score = 0
+    x_change = 0  # set x position at x axis
     y_change=0
     car_width=23
-    policecar_speed=10
+    policecar_speed = 10
     police=0  # police car is 0 stage
     police_startx=random.randrange(130,(700-car_width))
     police_starty=-600
@@ -132,13 +132,13 @@ def loop():  # all the function are called using this function
         policecar(police_startx, police_starty, police)  # call the function
         police_starty += policecar_speed  # police car speed increase
         car(x, y)  # call the function of car
-        if x<130 or x>700-car_width:
+        if x<180 or x>680-car_width:
             #bumped=True # stop the game
             crash()
         if police_starty>600:
             police_starty=0-police_height  # only onc car is passed
-            police_startx=random.randrange(130,(1000-300))  # another car is come
-            police = random.randrange(0,10) # different car every times come
+            police_startx=random.randrange(130, (1000-300))  # another car is come
+            police = random.randrange(0, 10)  # different car every times come
             score += 1
 
         if y<police_starty+police_height:
